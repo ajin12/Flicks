@@ -105,13 +105,6 @@ public class MovieDetailsActivity extends AppCompatActivity {
         // pass the video id as a string extra
         String videoId = getIntent().getStringExtra("videoId");
         intent.putExtra("videoId", videoId);
-        Toast.makeText(MovieDetailsActivity.this,
-                videoId,
-                Toast.LENGTH_LONG).show();
-//        // show the activity if videoId exists
-//        if (videoId != null) {
-//            context.startActivity(intent);
-//        } // TODO -- else block
         getVideos(videoId);
     }
 
@@ -130,10 +123,8 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 try {
                     // load the results into movies list
                     JSONArray results = response.getJSONArray("results");
-//                    Log.i("test", "outside if");
                     // if videos exist, get the first video's key
                     if (results.length() > 0) {
-//                        Log.i("test", "in if");
                         key = results.getJSONObject(0).getString("key");
                         // create intent for the new activity
                         Intent intent = new Intent(context, MovieTrailerActivity.class);

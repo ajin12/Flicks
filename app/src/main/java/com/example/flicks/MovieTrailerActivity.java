@@ -8,9 +8,14 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MovieTrailerActivity extends YouTubeBaseActivity {
     // video key
     String key;
+    // resolve the player view from the layout
+    @BindView(R.id.player) YouTubePlayerView playerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +23,9 @@ public class MovieTrailerActivity extends YouTubeBaseActivity {
         setContentView(R.layout.activity_movie_trailer);
 
         // resolve the player view from the layout
-        YouTubePlayerView playerView = (YouTubePlayerView) findViewById(R.id.player);
+//        YouTubePlayerView playerView = (YouTubePlayerView) findViewById(R.id.player);
+//        @BindView(R.id.player) YouTubePlayerView playerView;
+        ButterKnife.bind(this);
 
         key = getIntent().getStringExtra("key");
 
