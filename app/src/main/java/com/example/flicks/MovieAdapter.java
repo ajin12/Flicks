@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -130,6 +131,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 Intent intent = new Intent(context, MovieDetailsActivity.class);
                 // serialize the movie using parceler, use its short name as a key
                 intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
+                String imageUrl = config.getImageUrl(config.getBackdropSize(), movie.getBackdropPath());
+                intent.putExtra("imageUrl", imageUrl);
+                intent.putExtra("videoId", Integer.toString(movie.getId()));
                 // show the activity
                 context.startActivity(intent);
             }
