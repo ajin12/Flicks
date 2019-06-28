@@ -107,8 +107,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         ImageView ivBackdropImage;
         TextView tvTitle;
         TextView tvOverview;
-        TextView tvVote;
-        TextView tvRelease;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

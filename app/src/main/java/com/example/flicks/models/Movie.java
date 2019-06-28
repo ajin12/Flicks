@@ -15,6 +15,7 @@ public class Movie {
     public Double voteAverage;
     public String releaseDate;
     public Integer voteCount;
+    public Integer id;
 
     // no-arg, empty constructor required for Parceler
     public Movie() {}
@@ -28,6 +29,7 @@ public class Movie {
         voteAverage = object.getDouble("vote_average");
         releaseDate = object.getString("release_date");
         voteCount = object.getInt("vote_count");
+        id = object.getInt("id");
     }
 
     public String getTitle() {
@@ -56,5 +58,9 @@ public class Movie {
 
     public Integer getVoteCount() {
         return voteCount;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }
