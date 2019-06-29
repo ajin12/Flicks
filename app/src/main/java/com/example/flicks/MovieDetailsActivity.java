@@ -23,6 +23,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.parceler.Parcels;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
@@ -43,12 +45,13 @@ public class MovieDetailsActivity extends AppCompatActivity {
     String key;
 
     // the view objects
-    TextView tvTitle;
-    TextView tvOverview;
-    RatingBar rbVoteAverage;
-    TextView tvVote;
-    TextView tvRelease;
-    ImageView ivBackdropImage;
+    @BindView(R.id.tvTitle) TextView tvTitle;
+    @BindView(R.id.tvOverview) TextView tvOverview;
+    @BindView(R.id.rbVoteAverage) RatingBar rbVoteAverage;
+    @BindView(R.id.tvRelease) TextView tvRelease;
+    @BindView(R.id.tvVote) TextView tvVote;
+    @BindView(R.id.ivBackdropImage) ImageView ivBackdropImage;
+
 
     // context for rendering
     Context context;
@@ -59,12 +62,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movie_details);
 
         // resolve the view objects
-        tvTitle = (TextView) findViewById(R.id.tvTitle);
-        tvOverview = (TextView) findViewById(R.id.tvOverview);
-        rbVoteAverage = (RatingBar) findViewById(R.id.rbVoteAverage);
-        tvVote = (TextView) findViewById(R.id.tvVote);
-        tvRelease = (TextView) findViewById(R.id.tvRelease);
-        ivBackdropImage = (ImageView) findViewById(R.id.ivBackdropImage);
+        ButterKnife.bind(this);
 
         // unwrap the movie passed in via intent, using its simple name as a key
         movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra(Movie.class.getSimpleName()));

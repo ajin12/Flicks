@@ -22,9 +22,6 @@ public class MovieTrailerActivity extends YouTubeBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_trailer);
 
-        // resolve the player view from the layout
-//        YouTubePlayerView playerView = (YouTubePlayerView) findViewById(R.id.player);
-//        @BindView(R.id.player) YouTubePlayerView playerView;
         ButterKnife.bind(this);
 
         key = getIntent().getStringExtra("key");

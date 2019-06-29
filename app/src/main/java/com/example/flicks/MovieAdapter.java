@@ -20,6 +20,7 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
+import butterknife.ButterKnife;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
@@ -30,6 +31,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     Config config;
     // context for rendering
     Context context;
+
+//    @BindView(R.id.ivPosterImage) ImageView ivPosterImage;
+//    @BindView(R.id.ivBackdropImage) ImageView ivBackdropImage;
+//    @BindView(R.id.tvOverview) TextView tvOverview;
+//    @BindView(R.id.tvTitle) TextView tvTitle;
 
     // initialize with list
     public MovieAdapter(ArrayList<Movie> movies) {
@@ -49,6 +55,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         LayoutInflater inflater = LayoutInflater.from(context);
         // create the view using the item_movie layout
         View movieView = inflater.inflate(R.layout.item_movie, parent, false);
+//        ButterKnife.bind(this, parent);
         // return a new ViewHolder
         return new ViewHolder(movieView);
     }
@@ -75,6 +82,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             // load the backdrop image
             imageUrl = config.getImageUrl(config.getBackdropSize(), movie.getBackdropPath());
         }
+
+//        ButterKnife.bind(this, viewHolder);
 
         // get the correct placeholder and imageview for the current operation
         int placeholderId = isPortrait ? R.drawable.flicks_movie_placeholder : R.drawable.flicks_backdrop_placeholder;
@@ -104,10 +113,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         ImageView ivBackdropImage;
         TextView tvTitle;
         TextView tvOverview;
+//        @BindView(R.id.ivPosterImage) ImageView ivPosterImage;
+//        @BindView(R.id.ivBackdropImage) ImageView ivBackdropImage;
+//        @BindView(R.id.tvOverview) TextView tvOverview;
+//        @BindView(R.id.tvTitle) TextView tvTitle;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             // lookup view objects by id
+//            ButterKnife.bind(this, itemView);
             ivPosterImage = (ImageView) itemView.findViewById(R.id.ivPosterImage);
             ivBackdropImage = (ImageView) itemView.findViewById(R.id.ivBackdropImage);
             tvOverview = (TextView) itemView.findViewById(R.id.tvOverview);
@@ -117,6 +131,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
         @Override
         public void onClick(View v) {
+            ButterKnife.bind(this, v);
             // gets item position
             int position = getAdapterPosition();
             // make sure the position is valid, i.e. actually exists in the view
